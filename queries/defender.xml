@@ -1,1 +1,11 @@
-index=wineventlog* *Defender* | search Message!="An attempt was made to access an object*" | search Message!="A process has exited*" | search Message!="A new process has been created*" | search Message!="An account was successfully logged on*" | search Message!="A service was installed in the system*" | search Message!="An object was deleted*" | rex field=body "(?<out1>.*)" | table _time,out1 | rename out1 as Logs | dedup Logs | sort Date
+index=wineventlog* *Defender* 
+| search Message!="An attempt was made to access an object*" 
+| search Message!="A process has exited*" 
+| search Message!="A new process has been created*" 
+| search Message!="An account was successfully logged on*" 
+| search Message!="A service was installed in the system*" 
+| search Message!="An object was deleted*" 
+| rex field=body "(?<out1>.*)" 
+| table _time,out1 
+| rename out1 as Logs 
+| dedup Logs | sort -_time
