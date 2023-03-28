@@ -1,0 +1,4 @@
+*iis* index=wineventlog*  
+| dedup EventCode      
+| table  _time,EventCode,EventCodeDescription,Message
+| sort -_time
