@@ -1,0 +1,4 @@
+*hyper* index=windows* 
+| dedup Description 
+| table _time,Name,Description,DisplayName,Event_Code,Error_Code,Path,State 
+| rename Error_Code as "Error Code", Event_Code as "Event Code", Name as "Service Name"
