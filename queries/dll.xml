@@ -1,0 +1,1 @@
+index=wineventlog_corp_app *DLL | search OpCode!="The operation completed successfully*" | table _time,EventCode,EventType,Faulting_application_path,Faulting_module_path | eval _time=strftime(_time, "%m-%d-%y %H:%M") | rename Faulting_application_path as "App Path", Faulting_module_path as "Module Path" | sort Date
