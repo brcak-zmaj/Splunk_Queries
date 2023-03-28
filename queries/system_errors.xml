@@ -1,0 +1,5 @@
+index=wineventlog_corp_* EventCode=1002 OR EventCode=1001 OR EventCode=7034 OR EventCode=7031 NOT Message="Microsoft Defender Antivirus scan has finished"  
+| rex field=body "(?<out1>.*)" 
+| dedup out1 
+| table _time,Event_Name,out1,SourceName
+| rename out1 as Logs
