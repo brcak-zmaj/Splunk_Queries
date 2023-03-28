@@ -1,0 +1,1 @@
+sourcetype=who index=os | table _time,USERNAME,HOSTNAME | rename HOSTNAME as "Logged in from", USERNAME as "Username" | eval _time=strftime(_time, "%m-%d-%y %H:%M")
