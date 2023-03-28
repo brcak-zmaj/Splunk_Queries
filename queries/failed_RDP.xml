@@ -1,4 +1,4 @@
-index=wineventlog_corp_* EventCode=4625 
+index=wineventlog* EventCode=4625 
 | table _time,Account_Name,Failure_Reason,Source_Network_Address,Source_Port,host 
 | eval _time=strftime(_time, "%m-%d-%y %H:%M")  
 | eval Account_Name=mvindex(Account_Name,1) 
