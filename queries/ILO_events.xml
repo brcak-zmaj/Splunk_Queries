@@ -1,0 +1,5 @@
+index=wineventlog_corp_sys EventCode=2562 OR EventCode=14338 OR EventCode=8194 OR EventCode=14082 
+|eval Date_Time=strftime(_time, "%m-%d-%y %H:%M")  
+| table Date_Time, Message, EventCode 
+| rex field=Message mode=sed "s/\r |\n//g" 
+| sort -Date_Time
