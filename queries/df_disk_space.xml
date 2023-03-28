@@ -1,0 +1,1 @@
+sourcetype=df index=os Type!=devtmpfs |dedup Filesystem |table Type,Filesystem,MountedOn,Size,Avail,PercentFreeSpace,PercentUsedSpace  |rename MountedOn as Mountpoint, Size as "Total Size", Avail as "Free Space", PercentFreeSpace as "Percent Free", PercentUsedSpace as "Percent Used"
