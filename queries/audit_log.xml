@@ -1,0 +1,1 @@
+index=*os | search AUID!=unset  | table AUID,SUID,addr,exe,grantors,op,res,type | rename AUID as " Audit user ID", SUID as "Set User ID", addr as "Address"
