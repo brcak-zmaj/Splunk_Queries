@@ -1,0 +1,4 @@
+index=wineventlog_corp_sys EventCode=7042 OR EventCode=16945 
+| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M")  
+| table Date_Time,Message,EventCode 
+| sort - Date_Time
