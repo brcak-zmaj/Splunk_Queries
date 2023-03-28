@@ -1,0 +1,4 @@
+index=wineventlog_corp_* EventCode=333 OR EventCode=1003 OR EventCode=129 OR EventCode=2004 NOT SourceName=Microsoft-Windows-Time-Service NOT Message="Hypervisor initialized I/O remapping" NOT Message="The Software Protection service has completed licensing status check*"  
+| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M")  
+| rex field=Message mode=sed "s/\r |\n//g"
+| table Date_Time, Message, EventCode 
