@@ -1,0 +1,4 @@
+index=wineventlog_corp_app EventCode=43 "TaskCategory=None" 
+| dedup host 
+| table Message 
+| rex field=Message mode=sed "s/\r |\n//g"
