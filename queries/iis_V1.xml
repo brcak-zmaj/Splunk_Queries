@@ -1,0 +1,4 @@
+*iis* index=wineventlog* EventCodeDescription!="A new process has been created" EventCodeDescription!="Cryptographic operation" EventCodeDescription!="Key file operation"  
+| dedup Message 
+| table _time,EventCode,EventCodeDescription,Message
+| sort -_time
