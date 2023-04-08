@@ -1,7 +1,4 @@
-index=wineventlog_corp_* *dns 
-| search OpCode!="The operation completed successfully*" 
-| search Message!="A new process has been created*" 
-| search Message!="A rule was listed when the Windows Firewall started*" 
+index=wineventlog_corp_* *dns NOT (OpCode="The operation completed successfully*") NOT (Message="A new process has been created*") NOT (Message="A rule was listed when the Windows Firewall started*") 
 | dedup Message 
 | table _time,EventCode,Adapter_specific_Domain_Suffix,Message 
-| rename Adapter_specific_Domain_Suffix as Domain | sort Date
+| rename Adapter_specific_Domain_Suffix as Domain | sort -_time
