@@ -1,6 +1,7 @@
-index=win* EventCode=41 OR EventCode=4608 OR EventCode=4609 OR EventCode=4612 OR EventCode=4739 OR EventCode=4647 OR EventCode=1074 NOT Category="Object Access"  
-| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M") 
-| rex field=Message "(?<out1>.*)" 
-| table Date_Time,EventCode,Account_Name,EventCodeDescription,out1 
-| rename EventCodeDescription as "Log", Account_Name as Account, out1 as "Event Message" 
-| sort - Date_Time
+
+index=win* (EventCode=41 OR EventCode=4608 OR EventCode=4609 OR EventCode=4612 OR EventCode=4739 OR EventCode=4647 OR EventCode=1074) NOT (Category="Object Access")
+| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M")
+| rex field=Message "(?<out1>.*)"
+| table Date_Time, EventCode, Account_Name, EventCodeDescription, out1
+| rename EventCodeDescription as "Log", Account_Name as Account, out1 as "Event Message"
+| sort -_time
