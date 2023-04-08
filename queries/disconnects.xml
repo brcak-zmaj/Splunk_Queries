@@ -1,5 +1,6 @@
-index=wineventlog_* SourceName=Microsoft-Windows-Kernel-Power  
-| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M") 
-| rex field=Message "(?<out1>.*)"  
-| table _time,EventCode,out1 
+index=wineventlog_* SourceName=Microsoft-Windows-Kernel-Power
+| eval Date_Time=strftime(_time, "%m-%d-%y %H:%M")
+| rex field=Message "(?<out1>.*)"
+| table _time, EventCode, out1
 | rename out1 as Log
+
