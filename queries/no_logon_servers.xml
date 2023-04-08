@@ -1,6 +1,6 @@
-index=wineventlog_corp_sys sourcetype=WinEventLog:System EventCode=7038 Message="*currently no logon servers*"  
-| table _time,EventCode,EventType,Message 
-| rex field=Message "on as (?<USERID>[^\s]+)" 
-| stats latest(_time) as TIME,values(USERID), count by ComputerName 
-| eval TIME=strftime(TIME,"%c") 
+index=wineventlog_corp_sys sourcetype=WinEventLog:System EventCode=7038 Message="*currently no logon servers*"
+| table _time, EventCode, EventType, Message
+| rex field=Message "on as (?<USERID>[^\s]+)"
+| stats latest(_time) as TIME, values(USERID) as USERID, count by ComputerName
+| eval TIME=strftime(TIME, "%c")
 | sort -_time
