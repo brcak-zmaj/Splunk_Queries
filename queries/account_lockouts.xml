@@ -1,3 +1,4 @@
-index=win* EventCode=4625 OR EventCode=4740 OR EventCode=644 
+index=win* (EventCode=4625 OR EventCode=4740 OR EventCode=644)
 | table _time,EventCode,Failure_Reason,user,Account_Domain,Source_Network_Address,Caller_Computer_Name,Workstation_Name,ComputerName
 | sort -_time
+
